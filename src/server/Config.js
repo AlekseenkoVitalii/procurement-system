@@ -1,7 +1,7 @@
 class Config {
   static get SPREADSHEET_IDS() {
     return {
-      DATABASE: 'ВАШ_РЕАЛЬНЫЙ_ID_ТАБЛИЦЫ_СЮДА'
+      DATABASE: '1H_8okZ7ZPa7afHJOOuFkefw8mp8xsyj2uSeSJOqytvo'
     };
   }
   
