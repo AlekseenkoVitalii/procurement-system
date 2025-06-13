@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+npm-debug.log*
+
+# Google Apps Script (содержит приватные ID)
+.clasp.json
+
+# Environment variables
+.env
+.env.local
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code personal settings
+.vscode/settings.json
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Build outputs
+dist/
+build/

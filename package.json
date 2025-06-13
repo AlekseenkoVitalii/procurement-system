@@ -1,0 +1,13 @@
+{
+  "name": "procurement-system",
+  "version": "1.0.0",
+  "scripts": {
+    "push": "clasp push",
+    "pull": "clasp pull", 
+    "open": "clasp open",
+    "dev": "npm run push && npm run open"
+  },
+  "devDependencies": {
+    "@google/clasp": "^2.4.2"
+  }
+}
