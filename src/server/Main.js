@@ -66,45 +66,22 @@ function doPost(e) {
 }
 
 function renderDashboard(userInfo) {
-  const html = `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>${Config.APP_SETTINGS.NAME}</title>
-      <meta charset="UTF-8">
-      <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .header { background: #3498db; color: white; padding: 20px; border-radius: 10px; }
-        .user-info { background: #ecf0f1; padding: 15px; border-radius: 5px; margin: 20px 0; }
-        .success { color: #27ae60; }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <div class="header">
-          <h1>🚀 ${Config.APP_SETTINGS.NAME}</h1>
-          <p>Добро пожаловать в систему заказов!</p>
-        </div>
-        
-        <div class="user-info">
-          <h3>Информация о пользователе:</h3>
-          <p><strong>ФИО:</strong> ${userInfo.name}</p>
-          <p><strong>Email:</strong> ${userInfo.email}</p>
-          <p><strong>Департамент:</strong> ${userInfo.department}</p>
-          <p><strong>Роль:</strong> ${userInfo.role}</p>
-        </div>
-        
-        <div class="success">
-          <h3>✅ Система работает корректно!</h3>
-          <p>MVC архитектура настроена и готова к развитию.</p>
-        </div>
-      </div>
-    </body>
-    </html>
-  `;
+  const template = HtmlService.createTemplateFromFile('index');
+  template.userInfo = userInfo;
   
-  return HtmlService.createHtmlOutput(html);
+  return template.evaluate()
+    .setTitle(Config.APP_SETTINGS.NAME)
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
+function include(filename) {
+  if (filename === 'styles') {
+    return HtmlService.createHtmlOutputFromFile('styles').getContent();
+  }
+  if (filename === 'app') {
+    return HtmlService.createHtmlOutputFromFile('app').getContent();
+  }
+  return '';
 }
 
 function renderAccessDenied(message) {

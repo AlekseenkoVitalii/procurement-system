@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система заказов</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        <?= include('styles') ?>
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="text-center text-white">
+            <div class="spinner-border mb-3" style="width: 3rem; height: 3rem;"></div>
+            <h4>Загрузка системы...</h4>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="main-app" class="container-fluid" style="display: none;">
+        <!-- Header -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-shopping-cart me-2"></i>
+                    Система заказов
+                </a>
+                
+                <div class="navbar-nav ms-auto">
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-1"></i>
+                            <span id="user-name">Пользователь</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="showProfile()">
+                                <i class="fas fa-user-circle me-2"></i>Профиль
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">
+                                <i class="fas fa-sign-out-alt me-2"></i>Выход
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container-fluid p-4">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-3 col-lg-2">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action active" onclick="showDashboard()">
+                            <i class="fas fa-tachometer-alt me-2"></i>Дашборд
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action" onclick="showCreateOrder()">
+                            <i class="fas fa-plus me-2"></i>Новый заказ
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action" onclick="showMyOrders()">
+                            <i class="fas fa-list me-2"></i>Мои заказы
+                        </a>
+                        <div id="admin-menu" style="display: none;">
+                            <a href="#" class="list-group-item list-group-item-action" onclick="showAllOrders()">
+                                <i class="fas fa-clipboard-list me-2"></i>Все заказы
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" onclick="showManagement()">
+                                <i class="fas fa-cogs me-2"></i>Управление
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Area -->
+                <div class="col-md-9 col-lg-10">
+                    <div id="content-area">
+                        <!-- Dynamic content loads here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        <?= include('app') ?>
+    </script>
+</body>
+</html>
