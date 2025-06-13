@@ -38,6 +38,22 @@ function doPost(e) {
       
       case 'getUserInfo':
         return ApiResponse.success(accessCheck.userInfo);
+      
+        case 'getUserOrders':
+          const orderController = new OrderController();
+          return orderController.getUserOrders(accessCheck.userInfo);
+        
+        case 'getAllOrders':
+          const orderController2 = new OrderController();
+          return orderController2.getAllOrders(accessCheck.userInfo);
+        
+        case 'getOrderDetails':
+          const orderController3 = new OrderController();
+          return orderController3.getOrderDetails(requestData.orderId, accessCheck.userInfo);
+        
+        case 'createOrder':
+          const orderController4 = new OrderController();
+          return orderController4.createOrder(requestData.orderData, accessCheck.userInfo);
         
       default:
         return ApiResponse.error('Неизвестное действие: ' + action);
